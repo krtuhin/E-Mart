@@ -16,6 +16,9 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         
+        <mapping class="com.emart.entities.User"/>
+        <mapping class="com.emart.entities.Category"/>
+        <mapping class="com.emart.entities.Product"/>
     </session-factory>
 </hibernate-configuration>
 
