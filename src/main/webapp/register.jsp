@@ -38,7 +38,7 @@
 
                         <!--register form start-->
                         <div class="card-body px-5">
-                            <form action="RegisterServlet" method="post">
+                            <form action="RegisterServlet" method="post" enctype="multipart/form-data">
 
                                 <!--name-->
                                 <div class="form-group">
@@ -66,8 +66,8 @@
 
                                 <!--address-->
                                 <div class="form-group">
-                                    <label for="userAddress">Address</label>
-                                    <textarea name="address" id="userAddress" class="form-control" name="address" placeholder="Enter your delivery address" rows="3" cols="6"></textarea>
+                                    <label for="profile">Profile picture (Optional)</label>
+                                    <input type="file" id="profile" class="form-control" name="profile" placeholder="Choose profile picture">
                                 </div>
 
                                 <!--terms and condition checkbox-->

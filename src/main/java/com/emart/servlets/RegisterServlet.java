@@ -1,17 +1,23 @@
 package com.emart.servlets;
 
+import com.emart.dataobject.UserDao;
 import com.emart.entities.User;
 import com.emart.helper.FactoryProvider;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.servlet.http.Part;
 
+//multipart to get file input from html form
+@MultipartConfig
 public class RegisterServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -39,23 +45,46 @@ public class RegisterServlet extends HttpServlet {
                     String email = request.getParameter("email");
                     String password = request.getParameter("password");
                     String phone = request.getParameter("phone");
-                    String address = request.getParameter("address");
+
+                    //file input from html form
+                    Part profile = request.getPart("profile");
+
+                    String picture = new String();
+
+                    //condition for checking input is null or not
+                    if (profile.getSize() == 0) {
+
+                        picture = "default.png";
+
+                    } else {
+
+                        //getting input file name
+                        picture = profile.getSubmittedFileName();
+                    }
 
                     //calling user object
-                    User user = new User(name, email, password, phone, "default.png", address);
+                    User user = new User(name, email, password, phone, picture, "normal");
 
-                    //getting hibernate session
-                    Session session = FactoryProvider.getFactory().openSession();
+                    //save data into database using User dao class
+                    int id = new UserDao().registerUserWithEmailAndPassword(FactoryProvider.getFactory(), user);
 
-                    //create transaction
-                    Transaction transaction = session.beginTransaction();
+                    //image saving process
+                    //access image path to save image into server
+                    String path = request.getRealPath("img") + File.separator + "profiles" + File.separator + picture;
 
-                    //saving user data into database
-                    int userId = (int) session.save(user);
+                    FileOutputStream fos = new FileOutputStream(path);
 
-                    //commit transaction and close session
-                    transaction.commit();
-                    session.close();
+                    InputStream is = profile.getInputStream();
+
+                    byte data[] = new byte[is.available()];
+
+                    is.read(data);
+                    fos.write(data);
+
+                    fos.flush();
+                    fos.close();
+                    is.close();
+                    //end image saving process
 
                     //registration successfull message
                     HttpSession httpSession = request.getSession();
