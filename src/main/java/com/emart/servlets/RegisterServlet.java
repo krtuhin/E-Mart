@@ -66,7 +66,7 @@ public class RegisterServlet extends HttpServlet {
                     User user = new User(name, email, password, phone, picture, "normal");
 
                     //save data into database using User dao class
-                    int id = new UserDao().registerUserWithEmailAndPassword(FactoryProvider.getFactory(), user);
+                    int id = new UserDao().registerUserWithEmailAndPassword(user);
 
                     //image saving process
                     //access image path to save image into server
