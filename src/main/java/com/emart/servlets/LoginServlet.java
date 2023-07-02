@@ -1,17 +1,15 @@
 package com.emart.servlets;
 
+import com.emart.dataobject.UserDao;
 import com.emart.entities.User;
-import com.emart.helper.FactoryProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Session;
 
 public class LoginServlet extends HttpServlet {
 
@@ -36,20 +34,9 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("login.jsp");
 
                 } else {
-                    //hibernate session for save data into database
-                    Session s = FactoryProvider.getFactory().openSession();
 
-                    //HQL
-                    String query = "from User where email=:x and password=:y";
-
-                    Query q = s.createQuery(query);
-
-                    //dynamic value set
-                    q.setParameter("x", email);
-                    q.setParameter("y", password);
-
-                    //get result from database
-                    List<User> userList = q.getResultList();
+                    //call user dao login method for login tha user
+                    List<User> userList = new UserDao().loginUserWithEmailAndPassword(email, password);
 
                     //condition for checking user exist or not
                     if (userList.isEmpty()) {
@@ -85,7 +72,6 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("login.jsp");
                         }
                     }
-                    s.close();
                 }
             } catch (Exception e) {
 
