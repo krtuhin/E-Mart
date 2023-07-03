@@ -15,35 +15,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     private String name;
 
-    @Column(name = "user_email")
+    @Column(name = "user_email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "user_password")
+    @Column(name = "user_password", nullable = false)
     private String password;
 
-    @Column(length = 11, name = "user_phone")
-    private int phone;
+    @Column(length = 11, name = "user_phone", nullable = false)
+    private String phone;
 
-    @Column(name = "user_pic")
+    @Column(name = "user_pic", nullable = false)
     private String picture;
 
-    @Column(name = "user_address", length = 1500)
-    private String address;
-
-    public User(int id, String userName, String usrEmail, String userPassword, int userPhone, String userPic, String userAddress) {
-        this.id = id;
-        this.name = userName;
-        this.email = usrEmail;
-        this.password = userPassword;
-        this.phone = userPhone;
-        this.picture = userPic;
-        this.address = userAddress;
-    }
+    @Column(name = "user_type", length = 10, nullable = false)
+    private String userType;
 
     public User() {
+    }
+
+    public User(String name, String email, String password, String phone, String picture, String userType) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.picture = picture;
+        this.userType = userType;
     }
 
     public int getId() {
@@ -78,11 +77,11 @@ public class User {
         this.password = userPassword;
     }
 
-    public int getUserPhone() {
+    public String getUserPhone() {
         return phone;
     }
 
-    public void setUserPhone(int userPhone) {
+    public void setUserPhone(String userPhone) {
         this.phone = userPhone;
     }
 
@@ -94,17 +93,17 @@ public class User {
         this.picture = userPic;
     }
 
-    public String getUserAddress() {
-        return address;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.address = userAddress;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phone=" + phone + ", picture=" + picture + ", address=" + address + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phone=" + phone + ", picture=" + picture + ", userType=" + userType + '}';
     }
 
 }
