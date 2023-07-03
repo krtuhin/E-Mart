@@ -8,18 +8,8 @@
         <!--bootstrap file-->
         <%@include file="common_files/css_js.jsp" %>
 
-        <!--register page background image-->
-        <style>
-            body{
-                background-image: url("img/register_bg.jpg");
-                background-attachment: fixed;
-                background-size: cover;
-            }
-        </style>
-        <!--background image end-->
-
     </head>
-    <body>
+    <body class="register-bg">
         <!--navbar file-->
         <%@include file="common_files/navbar.jsp" %>
 
