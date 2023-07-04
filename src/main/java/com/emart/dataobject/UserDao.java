@@ -61,4 +61,29 @@ public class UserDao {
 
         return users;
     }
+
+    //method for update user details
+    public User updateUser(int userId, User u) {
+
+        //hibernate session
+        Session s = FactoryProvider.getFactory().openSession();
+        Transaction tx = s.beginTransaction();
+
+        //update data in database using hibernate
+        //fetch current user from database
+        User user = s.get(User.class, userId);
+
+        //set attributes (update attributes)
+        //it will automatically update user details in database
+        user.setUserName(u.getUserName());
+        user.setUsrEmail(u.getUsrEmail());
+        user.setUserPassword(u.getUserPassword());
+        user.setUserPhone(u.getUserPhone());
+        user.setUserPic(u.getUserPic());
+
+        tx.commit();
+        s.close();
+
+        return user;
+    }
 }
