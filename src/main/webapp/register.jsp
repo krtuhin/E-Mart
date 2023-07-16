@@ -1,3 +1,16 @@
+<%
+    //check user already logged in or not
+    User user3 = (User) session.getAttribute("currentUser");
+
+    //if logged in then cannot get access of register page
+    if (user3 != null) {
+        session.setAttribute("msg", "You are already logged in..!");
+        session.setAttribute("color", "danger");
+        response.sendRedirect("home.jsp");
+        return;
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,7 +64,7 @@
                                 <!--mobile number-->
                                 <div class="form-group">
                                     <label for="userPhone">Phone No. <span class="mendatory">*</span></label>
-                                    <input name="phone" type="number" minlength="10" maxlength="10" class="form-control" id="userPhone" placeholder="Enter mobile number" required>
+                                    <input name="phone" pattern="[0-9]{10}" type="number" minlength="10" maxlength="10" class="form-control" id="userPhone" placeholder="Enter mobile number" required>
                                 </div>
 
                                 <!--address-->

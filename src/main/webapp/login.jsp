@@ -1,3 +1,16 @@
+<%@page import="com.emart.entities.User"%>
+<%
+    //validation for if any user logged in then can not access the login page
+    User user3 = (User) session.getAttribute("currentUser");
+
+    if (user3 != null) {
+        session.setAttribute("msg", "You are already logged in..!");
+        session.setAttribute("color", "danger");
+        response.sendRedirect("home.jsp");
+        return;
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
