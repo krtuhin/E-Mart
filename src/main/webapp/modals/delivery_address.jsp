@@ -1,7 +1,20 @@
+<%@page import="com.emart.dataobject.AddressDao"%>
+<%@page import="com.emart.entities.Address"%>
+<%@page import="java.util.List"%>
 <%@page import="com.emart.entities.User"%>
 <%
     //fetch current user details
     User user = (User) session.getAttribute("currentUser");
+
+    if (user == null) {
+        session.setAttribute("msg", "Please login to order your product..!");
+        session.setAttribute("color", "danger");
+        response.sendRedirect("login.jsp");
+
+        return;
+    }
+
+    List<Address> addresses = new AddressDao().getAllAddressByUserId(user.getId());
 %>
 
 <!-- Modal -->
