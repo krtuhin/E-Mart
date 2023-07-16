@@ -36,7 +36,7 @@ public class AddressOperationServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("msg", "Address deleted successfully..!");
                     session.setAttribute("color", "success");
-                    response.sendRedirect("order.jsp");
+                    response.sendRedirect("address_page.jsp");
 
                     //checking the operation is save operation or not
                 } else if (operation.trim().equalsIgnoreCase("save")) {
@@ -65,7 +65,17 @@ public class AddressOperationServlet extends HttpServlet {
                     //successfull message for add address into database
                     session.setAttribute("msg", "Address added successfully..!");
                     session.setAttribute("color", "success");
-                    response.sendRedirect("order.jsp");
+                    response.sendRedirect("address_page.jsp");
+
+                    //delivery
+                } else if (operation.trim().equalsIgnoreCase("deliver here")) {
+
+                    //fetch form data
+                    String pId = request.getParameter("p-id");
+                    String addId = request.getParameter("address-id");
+
+                    //show payment page with URL Rewriting
+                    response.sendRedirect("payment_page.jsp?p_id=" + pId + "&a_id=" + addId);
                 }
             } catch (Exception e) {
 
@@ -73,7 +83,7 @@ public class AddressOperationServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("msg", "Something went wrong, try again..!");
                 session.setAttribute("color", "danger");
-                response.sendRedirect("order.jsp");
+                response.sendRedirect("address_page.jsp");
             }
         }
     }
