@@ -131,4 +131,37 @@ public class Product {
         return "Product{" + "id=" + id + ", name=" + name + ", desc=" + desc + ", price=" + price + ", photo=" + photo + ", discount=" + discount + ", quantity=" + quantity + ", category=" + category + '}';
     }
 
+    //method for get price after discount
+    public int getDiscountPrice() {
+
+        return this.price - ((this.price * this.discount) / 100);
+    }
+
+    //method for get optimized description
+    public String getDescription() {
+
+        if (this.desc.length() > 65) {
+
+            return this.desc.substring(0, 65) + "...";
+
+        } else {
+
+            return this.desc;
+
+        }
+    }
+
+    //method for get optimized title
+    public String getTitle() {
+
+        if (this.name.length() > 40) {
+
+            return this.name.substring(0, 40) + "...";
+
+        } else {
+
+            return this.name;
+        }
+    }
+
 }
