@@ -20,8 +20,8 @@ public class Cart {
     @Column(name = "product_Id", nullable = false)
     private int pId;
 
-    @Column(name = "product_quantity", nullable = false)
-    private int quantity;
+    @Column(name = "product_user_id", nullable = false, unique = true)
+    private int productUserId;
 
     @OneToOne
     private User user;
@@ -29,9 +29,9 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(int pId, int quantity, User user) {
+    public Cart(int pId, int productUserId, User user) {
         this.pId = pId;
-        this.quantity = quantity;
+        this.productUserId = productUserId;
         this.user = user;
     }
 
@@ -51,12 +51,12 @@ public class Cart {
         this.pId = pId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getProductUserId() {
+        return productUserId;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setProductUserId(int productUserId) {
+        this.productUserId = productUserId;
     }
 
     public User getUser() {
@@ -69,7 +69,7 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" + "id=" + id + ", pId=" + pId + ", quantity=" + quantity + ", user=" + user + '}';
+        return "Cart{" + "id=" + id + ", pId=" + pId + ", productUserId=" + productUserId + ", user=" + user + '}';
     }
 
 }
