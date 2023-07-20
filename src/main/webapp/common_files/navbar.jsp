@@ -19,27 +19,50 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
+            <!--home button based on condition-->
+            <%
+                if (nowUser != null) {
+                    if (nowUser.getUserType().trim().equalsIgnoreCase("admin")) {
+            %>
+
+            <!--if user is admin then home page is admin panel-->
             <!--home button-->
             <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">Home</a>
+                <a class="nav-link font-weight-bold" href="admin.jsp"><i class="fa fa-home font-weight-bold"></i> Home</a>
             </li>
+
+            <%} else {%>
+
+            <!--if user is normal user then home page is index page-->
+            <!--home button-->
+            <li class="nav-item active">
+                <a class="nav-link font-weight-bold" href="index.jsp"><i class="fa fa-home font-weight-bold"></i> Home</a>
+            </li>
+
+            <%}
+            } else {%>
+
+            <!--if user not logged in then home page is index page-->
+            <!--home button-->
+            <li class="nav-item active">
+                <a class="nav-link font-weight-bold" href="index.jsp"><i class="fa fa-home font-weight-bold"></i> Home</a>
+            </li>
+
+            <%}%>
+            <!--end all home button condition-->
 
             <!--about us-->
             <li class="nav-item active">
-                <a class="nav-link" href="about.jsp">About Us</a>
+                <a class="nav-link font-weight-bold" href="about.jsp"><i class="fa fa-info-circle"></i> About Us</a>
             </li>
 
             <!--contact us-->
             <li class="nav-item active">
-                <a class="nav-link" href="contact.jsp">Contact Us</a>
+                <a class="nav-link font-weight-bold" href="contact.jsp"><i class="fa fa-id-badge"></i> Contact Us</a>
             </li>
 
-            <%
-                String disable = null;
-                String btnColor = null;
-            %>
-
         </ul>
+
         <!--if no user logged in then show login and register option-->
         <% if (nowUser == null) { %>
 
@@ -55,10 +78,10 @@
         <!--if any user logged in then show user profile, product order, wishlist, logout button in place of login and register button-->
 
         <!--order button-->
-        <a class="btn my-2 my-sm-0 text-white" href="#" data-toggle="modal" data-target="#orderModal"><i class="fa fa-order-plus mr-1"></i> Orders</a>
+        <a class="btn my-2 my-sm-0 text-white font-weight-bold" href="#" data-toggle="modal" data-target="#orderListModal"><i class="fa fa-order-plus mr-1"></i> Orders</a>
 
         <!--wishlist button-->
-        <a class="btn my-2 my-sm-0 mr-3 text-white" href="wishlist.jsp" ><i class="fa fa-heart-o mr-1"></i> Wishlist (<%= pList.size()%>)</a>
+        <a class="btn my-2 my-sm-0 mr-3 text-white font-weight-bold" href="wishlist.jsp" ><i class="fa fa-heart-o mr-1 font-weight-bold"></i> Wishlist (<%= pList.size()%>)</a>
 
         <!--profile button-->
         <a class="btn my-2 my-sm-0 mr-2 text-white" href="#" data-toggle="modal" data-target="#profileModal"><span class="fa fa-user-circle-o"></span>  <%= nowUser.getUserName()%></a>
@@ -68,6 +91,9 @@
 
         <!--user profile modal-->
         <%@include file="../modals/profile_modal.jsp" %>
+
+        <!--order list modal-->
+        <%@include file="../modals/order_list_modal.jsp" %>
 
         <%
             }
