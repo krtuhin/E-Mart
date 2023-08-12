@@ -1,0 +1,166 @@
+/*star color for mandatory fields*/
+.mendatory{
+    color: red;
+}
+
+.custom-bg{
+    background-color: #f06292;
+}
+
+/*custom design for cards in admin page*/
+.admin .card{
+    border: 1px solid gray;
+}
+
+.admin .card:hover{
+    background-color: #d7ccc8;
+    cursor: pointer;
+}
+
+/*background for register page*/
+.register-bg{
+    background-image: url("../img/register.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*background for login page*/
+.login-bg{
+    background-image: url("../img/login.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*background for admin page*/
+.admin-bg{
+    background-image: url(../img/admin_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*background for about page*/
+.about-bg{
+    background-image: url("../img/about.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*mobile number field validation*/
+#mobile:focus:valid{
+    border-color: green;
+}
+
+#mobile:invalid{
+    border-color: red;
+}
+
+/*scroll view when card data is large*/
+.scroll{
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/*scroll view for wishlist*/
+.wishlist-scroll{
+    max-height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/*wishlist and address card height*/
+.detail-card{
+    height: 80vh;
+    max-height: 100%;
+}
+
+/*profile picture border radius*/
+.picture-radius{
+    width: 70px;
+    border-radius: 40px;
+}
+
+/*custom button color*/
+.btn-clr{
+    background-color: orangered;
+    font-weight: bold;
+}
+
+/*image size for product details page*/
+.product-details-img{
+    max-height: 400px;
+    max-width: 100%;
+    width: auto;
+}
+
+/*image size for all product list image*/
+.product-view-img{
+    max-height: 220px;
+    min-height: 220px;
+    max-width: 100%;
+    width: auto;
+}
+
+/*image size for wishlist image*/
+.wishlist-img{
+    max-height: 130px;
+    min-height: 130px;
+    max-width: 100%;
+    width: auto;
+}
+
+/*image size for order list image*/
+.product-list-img{
+    max-height: 100px;
+    min-height: 100px;
+    max-width: 100%;
+    width: auto;
+}
+
+/*default background color*/
+.default-bg{
+    background-color: #e0f7fa;
+}
+
+/*product title color*/
+.title-clr{
+    color: #212121;
+}
+
+/*product description color*/
+.desc-clr{
+    color: #263238;
+}
+
+/*price tag for show all product view*/
+.price-btn{
+    pointer-events: none;
+    border: 1px solid #424242;
+    color: #212121;
+}
+
+/*nav bar logo*/
+.logo{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/*text under anchor tag*/
+.text-link{
+    color: #212121;
+    text-decoration: none;
+}
+
+.text-link:hover{
+    color: #212121;
+    text-decoration: none;
+}
+
+/*order modal width*/
+.order-modal{
+    max-width: 50% !important;
+}
