@@ -43,15 +43,18 @@
                 <div class="card-body text-center">
 
                     <!--check icon-->
-                    <div class="display-3">
-                        <i class="fa fa-check-circle-o fa-3x text-success"></i>
+                    <div class="display-2">
+                        <i class="fa fa-check-circle fa-2x text-success"></i>
                     </div>
+
+                    <!--order success message-->
+                    <h1 class="text-success font-weight-bold">Thank You..!</h1>
 
                     <!--order success message-->
                     <h3 class="display-4 text-success">Your Order Placed Successfully..!</h3>
 
                     <!--order details button-->
-                    <a href='order_details.jsp?o_id=<%= orderId%>' class='btn btn-info text-white mt-4 mr-2 font-weight-bold'>Check Order Details</a>
+                    <a href='order_details.jsp?o_id=<%= orderId%>' class='btn btn-info text-white mt-4 mr-2 font-weight-bold'><i class="fa fa-cube"></i> Check Order Details</a>
 
                     <!--home button-->
                     <a href='index.jsp' class='btn btn-warning text-white mt-4 font-weight-bold'><i class="fa fa-home"></i> Home Page</a>

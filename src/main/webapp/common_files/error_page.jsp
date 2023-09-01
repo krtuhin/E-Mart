@@ -9,7 +9,7 @@
         <title>Error</title>
 
         <!--adding bootstrap-->
-        <%@include file="common_files/css_js.jsp" %>
+        <%@include file="css_js.jsp" %>
     </head>
     <body>
         <div class="container text-center mt-5">

@@ -24,7 +24,7 @@
     //fetch all user, products, product category to count total
     List<User> users = new UserDao().getAllUser(FactoryProvider.getFactory());
     List<Category> categorys = new CategoryDao().getAllCategory(FactoryProvider.getFactory());
-    List<Product> products = new ProductDao().getAllProduct(FactoryProvider.getFactory());
+    List<Product> products = new ProductDao().getAllProduct();
 
 %>
 

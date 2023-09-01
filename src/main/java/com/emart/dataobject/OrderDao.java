@@ -28,7 +28,7 @@ public class OrderDao {
     }
 
     //method for get all order for a particular user by user id
-    public List<Order> getAllOrderDetailsByUserId(int userId) {
+    public List<Order> getAllOrderDetailsByUserId(String userId) {
 
         Session s = this.factory.openSession();
 

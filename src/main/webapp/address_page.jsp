@@ -49,7 +49,7 @@
             <div class="col-md-12">
 
                 <!--start card-->
-                <div class="card" style="height: 80vh; max-height: 100%;">
+                <div class="card detail-card">
 
                     <!--header-->
                     <div class="card-header text-center text-white bg-dark">

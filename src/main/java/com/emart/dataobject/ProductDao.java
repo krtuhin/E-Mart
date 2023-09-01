@@ -1,6 +1,7 @@
 package com.emart.dataobject;
 
 import com.emart.entities.Product;
+import com.emart.helper.FactoryProvider;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -9,6 +10,10 @@ import org.hibernate.Transaction;
 
 public class ProductDao {
 
+    //get session factory
+    private SessionFactory factory = FactoryProvider.getFactory();
+
+    //method for save new product
     public int saveProduct(SessionFactory factory, Product product) {
 
         Session session = factory.openSession();
@@ -22,9 +27,10 @@ public class ProductDao {
         return id;
     }
 
-    public List<Product> getAllProduct(SessionFactory factory) {
+    //method for get all product
+    public List<Product> getAllProduct() {
 
-        Session session = factory.openSession();
+        Session session = this.factory.openSession();
 
         Query query = session.createQuery("from Product");
         List<Product> products = query.getResultList();
@@ -34,9 +40,10 @@ public class ProductDao {
         return products;
     }
 
-    public Product getProductById(SessionFactory factory, int pId) {
+    //method for getting single product by product id
+    public Product getProductById(int pId) {
 
-        Session session = factory.openSession();
+        Session session = this.factory.openSession();
 
         Product product = session.get(Product.class, pId);
 
@@ -45,10 +52,11 @@ public class ProductDao {
         return product;
     }
 
-    public List<Product> getAllProductByCId(SessionFactory factory, int cId) {
+    //method for getting all product of a particular category
+    public List<Product> getAllProductByCId(int cId) {
         List<Product> products = null;
         try {
-            Session session = factory.openSession();
+            Session session = this.factory.openSession();
 
             Query query = session.createQuery("from Product p where p.category.id=:x");
 

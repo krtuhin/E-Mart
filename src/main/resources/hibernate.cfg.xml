@@ -19,6 +19,10 @@
         <mapping class="com.emart.entities.User"/>
         <mapping class="com.emart.entities.Category"/>
         <mapping class="com.emart.entities.Product"/>
+        <mapping class="com.emart.entities.Cart"/>
+        <mapping class="com.emart.entities.Address"/>
+        <mapping class="com.emart.entities.Order"/>
+        
     </session-factory>
 </hibernate-configuration>
 
